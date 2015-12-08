@@ -4,6 +4,9 @@ if (!defined('IN_FS')) {
 	die('Do not access this file directly.');
 }
 
+if (!$user->perms('view_reports')) {
+	Flyspray::show_error(28);
+}
 
 if (!$user->can_view_project($proj->id)) {
 	$proj = new Project(0);
